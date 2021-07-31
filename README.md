@@ -1,1 +1,1 @@
-# diffassignment
+Please read the Guide.docx for more information about this project
