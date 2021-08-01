@@ -36,6 +36,7 @@ const SummaryPage: React.FC<SummaryInterface> = () => {
   useEffect(() => {
     let isLoaded = true;
     if (isLoaded) {
+      console.log("Called back from summary page");
       console.log(leftData, rightData);
       if (leftData && rightData) {
         // Determine url to call
@@ -84,10 +85,16 @@ const SummaryPage: React.FC<SummaryInterface> = () => {
 
   const doComparision = (event: any) => {
     const jsonObject: dbDataObjectInterface = JSON.parse(event.target.value);
-    if (jsonObject.formValues.usage === "left") {
+    if (
+      jsonObject.formValues.usage === "left" &&
+      jsonObject.dataEncodedString != leftData?.dataEncodedString
+    ) {
       setLeftData(jsonObject);
     }
-    if (jsonObject.formValues.usage === "right") {
+    if (
+      jsonObject.formValues.usage === "right" &&
+      jsonObject.dataEncodedString != rightData?.dataEncodedString
+    ) {
       setRightData(jsonObject);
     }
   };
